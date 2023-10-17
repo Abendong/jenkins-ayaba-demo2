@@ -6,9 +6,9 @@ def buildJar() {
 def buildImage() {
     echo "building the docker image..."
     withCredentials([usernamePassword(credentialsId: 'docker-hub-repo', passwordVariable: 'PASS', usernameVariable: 'USER')]) {
-        sh 'docker build -t abendong/my-repo:jma-1.2 .'
+        sh 'docker build -t abendong/group-pipeline:jma-1.2 .'
         sh "echo $PASS | docker login -u $USER --password-stdin"
-        sh 'docker push abendong/my-repo:jma-1.2'
+        sh 'docker push abendong/group-pipeline:jma-1.2'
     }
 } 
 
